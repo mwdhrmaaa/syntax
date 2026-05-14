@@ -58,5 +58,45 @@ export const languages = [
         }
       }
     ]
+  },
+  {
+    id: 'rust',
+    name: 'Rust',
+    icon: 'RS',
+    color: '#dea584',
+    description: {
+        en: 'A multi-paradigm system programming language focused on safety and performance.',
+        id: 'Bahasa pemrograman sistem multi-paradigma yang berfokus pada keamanan dan performa.'
+    },
+    syntax: [
+      {
+        title: 'Variables',
+        code: `// Immutable by default\nlet x = 5;\n\n// Mutable variable\nlet mut y = 10;\ny = 15;`,
+        explanation: {
+            en: 'Rust variables are immutable by default. Use "mut" for mutability.',
+            id: 'Variabel Rust bersifat tidak dapat diubah (immutable) secara default. Gunakan "mut" untuk mutabilitas.'
+        }
+      }
+    ]
+  },
+  {
+    id: 'go',
+    name: 'Go',
+    icon: 'GO',
+    color: '#00add8',
+    description: {
+        en: 'An open-source programming language that makes it easy to build simple, reliable, and efficient software.',
+        id: 'Bahasa pemrograman sumber terbuka yang memudahkan pembuatan perangkat lunak yang sederhana, andal, dan efisien.'
+    },
+    syntax: [
+      {
+        title: 'Concurrency',
+        code: `go func() {\n    fmt.Println("Running in background")\n}()`,
+        explanation: {
+            en: 'The "go" keyword starts a goroutine, which is a lightweight thread managed by the Go runtime.',
+            id: 'Kata kunci "go" memulai goroutine, yaitu thread ringan yang dikelola oleh Go runtime.'
+        }
+      }
+    ]
   }
 ];

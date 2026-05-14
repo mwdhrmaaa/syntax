@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const langEnBtn = document.getElementById('lang-en');
     const langIdBtn = document.getElementById('lang-id');
     
-    let currentLang = localStorage.getItem('selectedLang') || 'en';
+    let currentLang = localStorage.getItem('selectedLang') || 'id';
 
     // Initial render
     updateUI();
