@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Hub | Modern Code Reference</title>
+    <meta name="description" content="A premium reference for programming language syntax and functions.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Prism.js for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <nav>
+                <div class="logo" id="home-btn">
+                    <span class="logo-icon">{}</span>
+                    <h1>Syntax Hub</h1>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search language...">
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section id="hero">
+                <div class="hero-content">
+                    <h2>Master Every Language</h2>
+                    <p>Clean, interactive, and comprehensive syntax guide for modern developers.</p>
+                </div>
+            </section>
+
+            <section id="categories" class="view">
+                <div class="section-title">
+                    <h3>Programming Categories</h3>
+                    <div class="line"></div>
+                </div>
+                <div class="grid" id="languages-grid">
+                    <!-- Languages will be injected here -->
+                </div>
+            </section>
+
+            <section id="syntax-detail" class="view hidden">
+                <button id="back-btn" class="back-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    Back to Categories
+                </button>
+                <div class="detail-header">
+                    <div id="lang-icon" class="lang-icon-large">JS</div>
+                    <div class="lang-info">
+                        <h2 id="lang-name">JavaScript</h2>
+                        <p id="lang-desc">A high-level, interpreted programming language.</p>
+                    </div>
+                </div>
+                <div id="syntax-list" class="syntax-list">
+                    <!-- Syntax items will be injected here -->
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Syntax Hub. Crafted with &hearts; for Developers.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-rust.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-go.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
