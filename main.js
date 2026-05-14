@@ -207,7 +207,16 @@ document.addEventListener('DOMContentLoaded', () => {
             'csharp': 'csharp',
             'kotlin': 'kotlin',
             'ruby': 'ruby',
-            'sql': 'sql'
+            'sql': 'sql',
+            'dart': 'dart',
+            'bash': 'bash',
+            'lua': 'lua',
+            'r': 'r',
+            'scala': 'scala',
+            'perl': 'perl',
+            'haskell': 'haskell',
+            'html': 'markup',
+            'css': 'css'
         };
         return mapping[id] || 'clike';
     }
