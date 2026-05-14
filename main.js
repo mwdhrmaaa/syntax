@@ -202,7 +202,12 @@ document.addEventListener('DOMContentLoaded', () => {
             'cpp': 'cpp',
             'java': 'java',
             'php': 'php',
-            'swift': 'swift'
+            'swift': 'swift',
+            'typescript': 'typescript',
+            'csharp': 'csharp',
+            'kotlin': 'kotlin',
+            'ruby': 'ruby',
+            'sql': 'sql'
         };
         return mapping[id] || 'clike';
     }
