@@ -1,4 +1,5 @@
 import { languages } from './data.js';
+import { translations } from './translations.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     const languagesGrid = document.getElementById('languages-grid');
@@ -8,13 +9,58 @@ document.addEventListener('DOMContentLoaded', () => {
     const backBtn = document.getElementById('back-btn');
     const homeBtn = document.getElementById('home-btn');
     const searchInput = document.getElementById('search-input');
+    
+    // Language Switcher Elements
+    const langEnBtn = document.getElementById('lang-en');
+    const langIdBtn = document.getElementById('lang-id');
+    
+    let currentLang = localStorage.getItem('selectedLang') || 'en';
 
     // Initial render
+    updateUI();
     renderLanguages(languages);
 
     // Event Listeners
     backBtn.addEventListener('click', showCategories);
     homeBtn.addEventListener('click', showCategories);
+    
+    langEnBtn.addEventListener('click', () => setLanguage('en'));
+    langIdBtn.addEventListener('click', () => setLanguage('id'));
+
+    function setLanguage(lang) {
+        currentLang = lang;
+        localStorage.setItem('selectedLang', lang);
+        updateUI();
+        // Re-render components that depend on language
+        const query = searchInput.value.toLowerCase();
+        const filtered = languages.filter(langObj => 
+            langObj.name.toLowerCase().includes(query) || 
+            langObj.description.toLowerCase().includes(query)
+        );
+        renderLanguages(filtered);
+    }
+
+    function updateUI() {
+        const t = translations[currentLang];
+        
+        // Update Static Text
+        document.querySelector('header h1').textContent = t.title;
+        document.querySelector('#hero h2').textContent = t.heroTitle;
+        document.querySelector('#hero p').textContent = t.heroSubtitle;
+        document.querySelector('#categories h3').textContent = t.categoriesTitle;
+        searchInput.placeholder = t.searchPlaceholder;
+        document.querySelector('footer p').innerHTML = t.footer;
+        
+        // Update Back Button
+        backBtn.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            ${t.backBtn}
+        `;
+
+        // Update Switcher Active State
+        langEnBtn.classList.toggle('active', currentLang === 'en');
+        langIdBtn.classList.toggle('active', currentLang === 'id');
+    }
     
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();
@@ -33,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.innerHTML = `
                 <div class="icon-box" style="background: ${lang.color}">${lang.icon}</div>
                 <h4>${lang.name}</h4>
-                <p>${lang.description}</p>
+                <p>${lang.description[currentLang]}</p>
             `;
             card.addEventListener('click', () => showDetail(lang));
             languagesGrid.appendChild(card);
@@ -43,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showDetail(lang) {
         // Update detail content
         document.getElementById('lang-name').textContent = lang.name;
-        document.getElementById('lang-desc').textContent = lang.description;
+        document.getElementById('lang-desc').textContent = lang.description[currentLang];
         const iconLarge = document.getElementById('lang-icon');
         iconLarge.textContent = lang.icon;
         iconLarge.style.background = lang.color;
@@ -58,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Map our data id to Prism language classes
             const prismLang = getPrismLang(lang.id);
+            const t = translations[currentLang];
             
             syntaxItem.innerHTML = `
                 <h4>${item.title}</h4>
@@ -65,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <pre><code class="language-${prismLang}">${escapeHtml(item.code)}</code></pre>
                 </div>
                 <div class="explanation">
-                    ${item.explanation}
+                    <strong>${t.explanationLabel}:</strong> ${item.explanation[currentLang]}
                 </div>
             `;
             syntaxList.appendChild(syntaxItem);

@@ -83,13 +83,19 @@ nav {
   letter-spacing: -0.5px;
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .search-container input {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   padding: 0.8rem 1.5rem;
   border-radius: 30px;
   color: white;
-  width: 300px;
+  width: 250px;
   font-family: var(--font-main);
   transition: var(--transition);
 }
@@ -97,8 +103,38 @@ nav {
 .search-container input:focus {
   outline: none;
   border-color: var(--accent-color);
-  width: 350px;
+  width: 300px;
   box-shadow: 0 0 15px rgba(0, 242, 255, 0.1);
+}
+
+.lang-switcher {
+  display: flex;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 5px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: var(--transition);
+}
+
+.lang-btn.active {
+  background: var(--accent-color);
+  color: #000;
+}
+
+.lang-btn:hover:not(.active) {
+  color: var(--text-primary);
 }
 
 main {
