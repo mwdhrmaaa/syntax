@@ -199,7 +199,10 @@ document.addEventListener('DOMContentLoaded', () => {
             'python': 'python',
             'rust': 'rust',
             'go': 'go',
-            'cpp': 'cpp'
+            'cpp': 'cpp',
+            'java': 'java',
+            'php': 'php',
+            'swift': 'swift'
         };
         return mapping[id] || 'clike';
     }
