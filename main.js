@@ -6,19 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const categoriesSection = document.getElementById('categories');
     const syntaxDetailSection = document.getElementById('syntax-detail');
     const heroSection = document.getElementById('hero');
+    const searchInput = document.getElementById('search-input');
+    const languagesBar = document.getElementById('languages-bar');
     const backBtn = document.getElementById('back-btn');
     const homeBtn = document.getElementById('home-btn');
-    const searchInput = document.getElementById('search-input');
     
     // Language Switcher Elements
     const langEnBtn = document.getElementById('lang-en');
     const langIdBtn = document.getElementById('lang-id');
     
     let currentLang = localStorage.getItem('selectedLang') || 'id';
+    let selectedLangId = null;
 
     // Initial render
     updateUI();
     renderLanguages(languages);
+    renderLanguagesBar(languages);
 
     // Event Listeners
     backBtn.addEventListener('click', showCategories);
@@ -27,17 +30,64 @@ document.addEventListener('DOMContentLoaded', () => {
     langEnBtn.addEventListener('click', () => setLanguage('en'));
     langIdBtn.addEventListener('click', () => setLanguage('id'));
 
+    function renderLanguagesBar(data) {
+        languagesBar.innerHTML = '';
+        
+        // Add "All" or "Semua" chip
+        const allChip = document.createElement('div');
+        allChip.className = `lang-chip ${selectedLangId === null ? 'active' : ''}`;
+        allChip.innerHTML = `<span class="dot"></span> ${currentLang === 'id' ? 'Semua' : 'All'}`;
+        allChip.onclick = () => {
+            selectedLangId = null;
+            showCategories();
+            updateBarActiveState();
+        };
+        languagesBar.appendChild(allChip);
+
+        data.forEach(lang => {
+            const chip = document.createElement('div');
+            chip.className = `lang-chip ${selectedLangId === lang.id ? 'active' : ''}`;
+            chip.dataset.id = lang.id;
+            chip.innerHTML = `<span class="dot" style="background: ${lang.color}"></span> ${lang.name}`;
+            chip.onclick = () => {
+                selectedLangId = lang.id;
+                showDetail(lang);
+                updateBarActiveState();
+            };
+            languagesBar.appendChild(chip);
+        });
+    }
+
+    function updateBarActiveState() {
+        const chips = languagesBar.querySelectorAll('.lang-chip');
+        chips.forEach(chip => {
+            if (selectedLangId === null) {
+                chip.classList.toggle('active', !chip.dataset.id);
+            } else {
+                chip.classList.toggle('active', chip.dataset.id === selectedLangId);
+            }
+        });
+    }
+
     function setLanguage(lang) {
         currentLang = lang;
         localStorage.setItem('selectedLang', lang);
         updateUI();
+        renderLanguagesBar(languages);
+        
         // Re-render components that depend on language
         const query = searchInput.value.toLowerCase();
         const filtered = languages.filter(langObj => 
             langObj.name.toLowerCase().includes(query) || 
-            langObj.description.toLowerCase().includes(query)
+            langObj.description[currentLang].toLowerCase().includes(query)
         );
         renderLanguages(filtered);
+        
+        // If we are in detail view, re-render the detail
+        if (selectedLangId) {
+            const langObj = languages.find(l => l.id === selectedLangId);
+            if (langObj) showDetail(langObj);
+        }
     }
 
     function updateUI() {
@@ -66,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const query = e.target.value.toLowerCase();
         const filtered = languages.filter(lang => 
             lang.name.toLowerCase().includes(query) || 
-            lang.description.toLowerCase().includes(query)
+            lang.description[currentLang].toLowerCase().includes(query)
         );
         renderLanguages(filtered);
     });
@@ -81,7 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h4>${lang.name}</h4>
                 <p>${lang.description[currentLang]}</p>
             `;
-            card.addEventListener('click', () => showDetail(lang));
+            card.addEventListener('click', () => {
+                selectedLangId = lang.id;
+                showDetail(lang);
+                updateBarActiveState();
+            });
             languagesGrid.appendChild(card);
         });
     }
@@ -131,6 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showCategories() {
+        selectedLangId = null;
+        updateBarActiveState();
         categoriesSection.classList.remove('hidden');
         heroSection.classList.remove('hidden');
         syntaxDetailSection.classList.add('hidden');

@@ -137,12 +137,61 @@ nav {
   color: var(--text-primary);
 }
 
-main {
-  flex: 1;
-  padding: 2rem 5%;
-  max-width: 1400px;
-  margin: 0 auto;
-  width: 100%;
+.sticky-bar {
+  position: sticky;
+  top: 80px;
+  background: var(--bg-color);
+  z-index: 90;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.languages-bar {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.languages-bar::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.lang-chip {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.lang-chip .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.lang-chip:hover {
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.lang-chip.active {
+  background: var(--accent-color);
+  color: #000;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
 }
 
 #hero {
