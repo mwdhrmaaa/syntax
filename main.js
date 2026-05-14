@@ -216,7 +216,11 @@ document.addEventListener('DOMContentLoaded', () => {
             'perl': 'perl',
             'haskell': 'haskell',
             'html': 'markup',
-            'css': 'css'
+            'css': 'css',
+            'solidity': 'solidity',
+            'json': 'json',
+            'yaml': 'yaml',
+            'markdown': 'markdown'
         };
         return mapping[id] || 'clike';
     }

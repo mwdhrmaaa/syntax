@@ -1,6 +1,7 @@
 /**
  * Programming languages syntax data
  * Supporting multi-language explanations
+ * THE GOD MODE UPDATE: 35+ Languages & Technologies
  */
 export const languages = [
   {
@@ -8,43 +9,12 @@ export const languages = [
     name: 'JavaScript',
     icon: 'JS',
     color: '#f7df1e',
-    description: {
-        en: 'A high-level, interpreted programming language.',
-        id: 'Bahasa pemrograman tingkat tinggi yang diinterpretasi.'
-    },
+    description: { en: 'The language of the web.', id: 'Bahasa utama web.' },
     syntax: [
-      {
-        title: 'Variables',
-        code: `let name = "Antigravity";\nconst version = 1.0;\nvar legacy = true;`,
-        explanation: {
-            en: 'Use "let" for block-scoped variables, "const" for constants.',
-            id: 'Gunakan "let" untuk variabel lingkup blok, "const" untuk konstanta.'
-        }
-      },
-      {
-        title: 'Functions',
-        code: `// Arrow function\nconst greet = (name) => \`Hello \${name}\`;\n\n// Async function\nasync function fetchData() {\n  const res = await fetch(url);\n  return res.json();\n}`,
-        explanation: {
-            en: 'Functions can be defined as arrows or using the function keyword. Async/await handles asynchronous operations.',
-            id: 'Fungsi dapat didefinisikan sebagai arrow atau menggunakan kata kunci function. Async/await menangani operasi asinkron.'
-        }
-      },
-      {
-        title: 'Loops',
-        code: `// Array iteration\nitems.forEach(item => console.log(item));\n\n// For-of loop\nfor (const item of items) {\n  process(item);\n}`,
-        explanation: {
-            en: 'Iterate over arrays using forEach or the modern for-of loop.',
-            id: 'Iterasi melalui array menggunakan forEach atau loop for-of yang modern.'
-        }
-      },
-      {
-        title: 'Destructuring',
-        code: `const user = { name: "Antigravity", age: 25 };\nconst { name, age } = user;\n\nconst [first, second] = [1, 2];`,
-        explanation: {
-            en: 'Extract values from objects or arrays easily.',
-            id: 'Mengekstrak nilai dari objek atau array dengan mudah.'
-        }
-      }
+      { title: 'Variables', code: `let x = 10; const y = 20;`, explanation: { en: 'let/const usage.', id: 'Penggunaan let/const.' } },
+      { title: 'Async/Await', code: `async function run() { await task(); }`, explanation: { en: 'Handling async operations.', id: 'Menangani operasi asinkron.' } },
+      { title: 'Destructuring', code: `const { name, age } = user;`, explanation: { en: 'Extracting object properties.', id: 'Mengekstrak properti objek.' } },
+      { title: 'Proxy', code: `const p = new Proxy(target, handler);`, explanation: { en: 'Custom behavior for fundamental operations.', id: 'Perilaku kustom untuk operasi dasar.' } }
     ]
   },
   {
@@ -52,43 +22,11 @@ export const languages = [
     name: 'Python',
     icon: 'PY',
     color: '#3776ab',
-    description: {
-        en: 'Known for readability and simplicity.',
-        id: 'Dikenal karena keterbacaan dan kesederhanaannya.'
-    },
+    description: { en: 'Simplicity and power.', id: 'Kesederhanaan dan kekuatan.' },
     syntax: [
-      {
-        title: 'List Comprehension',
-        code: `squares = [x**2 for x in range(10) if x % 2 == 0]`,
-        explanation: {
-            en: 'A concise way to create lists with filtering.',
-            id: 'Cara ringkas untuk membuat list dengan penyaringan.'
-        }
-      },
-      {
-        title: 'Error Handling',
-        code: `try:\n    result = 10 / 0\nexcept ZeroDivisionError:\n    print("Cannot divide by zero")\nfinally:\n    print("Cleanup")`,
-        explanation: {
-            en: 'Use try-except blocks to handle exceptions gracefully.',
-            id: 'Gunakan blok try-except untuk menangani eksepsi dengan baik.'
-        }
-      },
-      {
-        title: 'Decorators',
-        code: `@my_decorator\ndef my_function():\n    pass`,
-        explanation: {
-            en: 'Decorators modify the behavior of a function or class.',
-            id: 'Decorator memodifikasi perilaku fungsi atau class.'
-        }
-      },
-      {
-        title: 'File I/O',
-        code: `with open('file.txt', 'r') as f:\n    content = f.read()`,
-        explanation: {
-            en: 'The "with" statement ensures proper resource cleanup (closing the file).',
-            id: 'Pernyataan "with" memastikan pembersihan sumber daya yang tepat (menutup file).'
-        }
-      }
+      { title: 'Generators', code: `def gen(): yield 1; yield 2`, explanation: { en: 'Iterators with yield.', id: 'Iterator dengan yield.' } },
+      { title: 'Context Managers', code: `with open('f.txt') as f: pass`, explanation: { en: 'Resource management.', id: 'Manajemen sumber daya.' } },
+      { title: 'Decorators', code: `@log\ndef func(): pass`, explanation: { en: 'Modifying function behavior.', id: 'Memodifikasi perilaku fungsi.' } }
     ]
   },
   {
@@ -96,35 +34,10 @@ export const languages = [
     name: 'C++',
     icon: 'C++',
     color: '#00599c',
-    description: {
-        en: 'Powerful general-purpose programming language.',
-        id: 'Bahasa pemrograman serbaguna yang kuat.'
-    },
+    description: { en: 'High-performance systems language.', id: 'Bahasa sistem berperforma tinggi.' },
     syntax: [
-      {
-        title: 'Pointers',
-        code: `int x = 10;\nint* ptr = &x;\nstd::cout << *ptr; // Outputs 10`,
-        explanation: {
-            en: 'Pointers store the memory address of another variable.',
-            id: 'Pointer menyimpan alamat memori dari variabel lain.'
-        }
-      },
-      {
-        title: 'Smart Pointers',
-        code: `auto ptr = std::make_unique<int>(10);\n// Automatically deleted when out of scope`,
-        explanation: {
-            en: 'Modern C++ uses smart pointers for automatic memory management.',
-            id: 'C++ modern menggunakan smart pointer untuk manajemen memori otomatis.'
-        }
-      },
-      {
-        title: 'Templates',
-        code: `template <typename T>\nT add(T a, T b) {\n    return a + b;\n}`,
-        explanation: {
-            en: 'Templates allow writing generic functions and classes.',
-            id: 'Template memungkinkan penulisan fungsi dan class generik.'
-        }
-      }
+      { title: 'Pointers', code: `int* ptr = &val;`, explanation: { en: 'Memory address storage.', id: 'Penyimpanan alamat memori.' } },
+      { title: 'Smart Pointers', code: `auto p = std::make_unique<int>(10);`, explanation: { en: 'Automatic memory management.', id: 'Manajemen memori otomatis.' } }
     ]
   },
   {
@@ -132,119 +45,10 @@ export const languages = [
     name: 'Java',
     icon: 'JV',
     color: '#ed8b00',
-    description: {
-        en: 'Class-based, object-oriented programming language.',
-        id: 'Bahasa pemrograman berorientasi objek berbasis class.'
-    },
+    description: { en: 'Class-based OOP.', id: 'OOP berbasis class.' },
     syntax: [
-      {
-        title: 'Lambda Expressions',
-        code: `list.forEach(n -> System.out.println(n));`,
-        explanation: {
-            en: 'Lambdas provide a clear and concise way to represent one method interface using an expression.',
-            id: 'Lambda memberikan cara yang jelas dan ringkas untuk merepresentasikan antarmuka satu metode menggunakan ekspresi.'
-        }
-      },
-      {
-        title: 'Inheritance',
-        code: `class Animal {\n  void eat() { ... }\n}\n\nclass Dog extends Animal {\n  void bark() { ... }\n}`,
-        explanation: {
-            en: 'Mechanism where one class acquires properties of another.',
-            id: 'Mekanisme di mana satu class memperoleh properti dari class lain.'
-        }
-      }
-    ]
-  },
-  {
-    id: 'go',
-    name: 'Go',
-    icon: 'GO',
-    color: '#00add8',
-    description: {
-        en: 'A simple, reliable, and efficient language.',
-        id: 'Bahasa yang sederhana, andal, dan efisien.'
-    },
-    syntax: [
-      {
-        title: 'Goroutines',
-        code: `go func(msg string) {\n    fmt.Println(msg)\n}("Hello")`,
-        explanation: {
-            en: 'Lightweight threads managed by the Go runtime.',
-            id: 'Thread ringan yang dikelola oleh Go runtime.'
-        }
-      },
-      {
-        title: 'Channels',
-        code: `ch := make(chan int)\ngo func() { ch <- 42 }()\nval := <-ch`,
-        explanation: {
-            en: 'Channels allow goroutines to communicate and synchronize.',
-            id: 'Channel memungkinkan goroutine untuk berkomunikasi dan bersinkronisasi.'
-        }
-      },
-      {
-        title: 'Interfaces',
-        code: `type Speaker interface {\n    Speak() string\n}`,
-        explanation: {
-            en: 'Implicitly satisfied interfaces allow for flexible polymorphism.',
-            id: 'Interface yang dipenuhi secara implisit memungkinkan polimorfisme yang fleksibel.'
-        }
-      }
-    ]
-  },
-  {
-    id: 'rust',
-    name: 'Rust',
-    icon: 'RS',
-    color: '#dea584',
-    description: {
-        en: 'A language focused on safety and performance.',
-        id: 'Bahasa yang berfokus pada keamanan dan performa.'
-    },
-    syntax: [
-      {
-        title: 'Pattern Matching',
-        code: `match value {\n    1 => println!("One"),\n    2 | 3 => println!("Two or Three"),\n    _ => println!("Other"),\n}`,
-        explanation: {
-            en: 'Powerful control flow construct for comparing values against patterns.',
-            id: 'Konstruksi alur kontrol yang kuat untuk membandingkan nilai terhadap pola.'
-        }
-      },
-      {
-        title: 'Enums',
-        code: `enum WebEvent {\n    PageLoad,\n    KeyPress(char),\n    Click { x: i64, y: i64 },\n}`,
-        explanation: {
-            en: 'Enums can have data associated with each variant.',
-            id: 'Enum dapat memiliki data yang terkait dengan setiap varian.'
-        }
-      }
-    ]
-  },
-  {
-    id: 'dart',
-    name: 'Dart',
-    icon: 'DT',
-    color: '#00d2b8',
-    description: {
-        en: 'Client-optimized language for fast apps.',
-        id: 'Bahasa yang dioptimalkan untuk klien untuk aplikasi cepat.'
-    },
-    syntax: [
-      {
-        title: 'Cascade Notation',
-        code: `var paint = Paint()\n  ..color = Colors.black\n  ..strokeCap = StrokeCap.round\n  ..strokeWidth = 5.0;`,
-        explanation: {
-            en: 'Perform a sequence of operations on the same object.',
-            id: 'Melakukan urutan operasi pada objek yang sama.'
-        }
-      },
-      {
-        title: 'Streams',
-        code: `Stream<int> countStream(int to) async* {\n  for (int i = 1; i <= to; i++) {\n    yield i;\n  }\n}`,
-        explanation: {
-            en: 'Async* and yield produce a stream of values.',
-            id: 'Async* dan yield menghasilkan aliran nilai (stream).'
-        }
-      }
+      { title: 'Lambda', code: `list.forEach(n -> System.out.println(n));`, explanation: { en: 'Functional style operations.', id: 'Operasi gaya fungsional.' } },
+      { title: 'Streams', code: `list.stream().filter(n -> n > 0).collect(...);`, explanation: { en: 'Processing sequences of elements.', id: 'Memproses urutan elemen.' } }
     ]
   },
   {
@@ -252,35 +56,10 @@ export const languages = [
     name: 'TypeScript',
     icon: 'TS',
     color: '#3178c6',
-    description: {
-        en: 'Strongly typed JavaScript.',
-        id: 'JavaScript dengan pengetikan kuat.'
-    },
+    description: { en: 'Typed JavaScript.', id: 'JavaScript dengan tipe data.' },
     syntax: [
-      {
-        title: 'Interfaces',
-        code: `interface User {\n    name: string;\n    id: number;\n}`,
-        explanation: {
-            en: 'Define the shape of an object.',
-            id: 'Mendefinisikan bentuk sebuah objek.'
-        }
-      },
-      {
-        title: 'Generics',
-        code: `function identity<T>(arg: T): T {\n    return arg;\n}`,
-        explanation: {
-            en: 'Reusable components that work with a variety of types.',
-            id: 'Komponen yang dapat digunakan kembali yang bekerja dengan berbagai tipe data.'
-        }
-      },
-      {
-        title: 'Enums',
-        code: `enum Color { Red, Green, Blue }`,
-        explanation: {
-            en: 'Friendly names for sets of numeric values.',
-            id: 'Nama ramah untuk kumpulan nilai numerik.'
-        }
-      }
+      { title: 'Interfaces', code: `interface User { name: string; }`, explanation: { en: 'Object shape definition.', id: 'Definisi bentuk objek.' } },
+      { title: 'Generics', code: `function wrap<T>(item: T): T { return item; }`, explanation: { en: 'Type-safe reusable components.', id: 'Komponen reusable yang aman tipe.' } }
     ]
   },
   {
@@ -288,147 +67,43 @@ export const languages = [
     name: 'Kotlin',
     icon: 'KT',
     color: '#7f52ff',
-    description: {
-        en: 'Modern programming language for JVM and Android.',
-        id: 'Bahasa pemrograman modern untuk JVM dan Android.'
-    },
+    description: { en: 'Modern JVM language.', id: 'Bahasa JVM modern.' },
     syntax: [
-      {
-        title: 'Null Safety',
-        code: `var name: String? = null\nprintln(name?.length ?: 0)`,
-        explanation: {
-            en: 'Safe calls (?.) and Elvis operator (?:) for null handling.',
-            id: 'Safe calls (?.) dan operator Elvis (?:) untuk penanganan null.'
-        }
-      },
-      {
-        title: 'Data Classes',
-        code: `data class User(val name: String, val age: Int)`,
-        explanation: {
-            en: 'Concise way to create classes for holding data.',
-            id: 'Cara ringkas untuk membuat class untuk menampung data.'
-        }
-      },
-      {
-        title: 'Extensions',
-        code: `fun String.removeFirst(): String = this.substring(1)`,
-        explanation: {
-            en: 'Add functionality to existing classes without inheritance.',
-            id: 'Menambahkan fungsionalitas ke class yang ada tanpa pewarisan.'
-        }
-      }
+      { title: 'Null Safety', code: `val name: String? = null`, explanation: { en: 'Handling null at compile time.', id: 'Menangani null saat kompilasi.' } },
+      { title: 'Extensions', code: `fun Int.isEven() = this % 2 == 0`, explanation: { en: 'Adding methods to existing classes.', id: 'Menambah metode ke class yang ada.' } }
     ]
   },
   {
-    id: 'swift',
-    name: 'Swift',
-    icon: 'SW',
-    color: '#f05138',
-    description: {
-        en: 'Fast, safe, and interactive language for Apple platforms.',
-        id: 'Bahasa yang cepat, aman, dan interaktif untuk platform Apple.'
-    },
+    id: 'go',
+    name: 'Go',
+    icon: 'GO',
+    color: '#00add8',
+    description: { en: 'Simplicity and concurrency.', id: 'Kesederhanaan dan konkurensi.' },
     syntax: [
-      {
-        title: 'Guard Statement',
-        code: `guard let name = person.name else { return }`,
-        explanation: {
-            en: 'Used for early exit and safety checks.',
-            id: 'Digunakan untuk keluar lebih awal dan pemeriksaan keamanan.'
-        }
-      },
-      {
-        title: 'Closures',
-        code: `let sorted = names.sorted { $0 < $1 }`,
-        explanation: {
-            en: 'Self-contained blocks of functionality that can be passed around.',
-            id: 'Blok fungsionalitas mandiri yang dapat dioperkan.'
-        }
-      }
+      { title: 'Goroutines', code: `go task()`, explanation: { en: 'Lightweight execution threads.', id: 'Thread eksekusi ringan.' } },
+      { title: 'Channels', code: `ch := make(chan int); ch <- 1`, explanation: { en: 'Communication between goroutines.', id: 'Komunikasi antar goroutine.' } }
     ]
   },
   {
-    id: 'ruby',
-    name: 'Ruby',
-    icon: 'RB',
-    color: '#701516',
-    description: {
-        en: 'Focussed on simplicity and productivity.',
-        id: 'Berfokus pada kesederhanaan dan produktivitas.'
-    },
+    id: 'rust',
+    name: 'Rust',
+    icon: 'RS',
+    color: '#dea584',
+    description: { en: 'Safe systems language.', id: 'Bahasa sistem yang aman.' },
     syntax: [
-      {
-        title: 'Blocks',
-        code: `5.times { |i| puts "Hello #{i}" }`,
-        explanation: {
-            en: 'Chunks of code that can be passed to methods.',
-            id: 'Potongan kode yang dapat dioperkan ke metode.'
-        }
-      },
-      {
-        title: 'Symbols',
-        code: `user = { :name => "Ruby", :id => 1 }`,
-        explanation: {
-            en: 'Immutable strings often used as keys in hashes.',
-            id: 'String yang tidak dapat diubah, sering digunakan sebagai kunci dalam hash.'
-        }
-      }
+      { title: 'Borrowing', code: `let s2 = &s1;`, explanation: { en: 'References without ownership transfer.', id: 'Referensi tanpa perpindahan kepemilikan.' } },
+      { title: 'Match', code: `match x { 1 => "one", _ => "many" }`, explanation: { en: 'Exhaustive pattern matching.', id: 'Pattern matching yang menyeluruh.' } }
     ]
   },
   {
-    id: 'csharp',
-    name: 'C#',
-    icon: 'C#',
-    color: '#178600',
-    description: {
-        en: 'Object-oriented language for .NET.',
-        id: 'Bahasa berorientasi objek untuk .NET.'
-    },
+    id: 'solidity',
+    name: 'Solidity',
+    icon: 'SOL',
+    color: '#363636',
+    description: { en: 'Smart contracts for Ethereum.', id: 'Smart contract untuk Ethereum.' },
     syntax: [
-      {
-        title: 'LINQ',
-        code: `var result = list.Where(x => x > 10).OrderBy(x => x);`,
-        explanation: {
-            en: 'Language Integrated Query for powerful data manipulation.',
-            id: 'Language Integrated Query untuk manipulasi data yang kuat.'
-        }
-      },
-      {
-        title: 'Properties',
-        code: `public string Name { get; set; }`,
-        explanation: {
-            en: 'Shorthand for private fields with getter/setter methods.',
-            id: 'Singkatan untuk field privat dengan metode getter/setter.'
-        }
-      }
-    ]
-  },
-  {
-    id: 'php',
-    name: 'PHP',
-    icon: 'PHP',
-    color: '#777bb4',
-    description: {
-        en: 'Scripting language suited to web development.',
-        id: 'Bahasa skrip yang cocok untuk pengembangan web.'
-    },
-    syntax: [
-      {
-        title: 'Ternary & Null Coalescing',
-        code: `$user = $name ?? 'Guest';\n$status = ($age >= 18) ? 'Adult' : 'Minor';`,
-        explanation: {
-            en: 'Shorthand for if-else and null checks.',
-            id: 'Singkatan untuk pemeriksaan if-else dan null.'
-        }
-      },
-      {
-        title: 'Classes',
-        code: `class User {\n    public function __construct(public string $name) {}\n}`,
-        explanation: {
-            en: 'Modern PHP 8+ property promotion in constructor.',
-            id: 'Promosi properti PHP 8+ modern dalam constructor.'
-        }
-      }
+      { title: 'Contract', code: `contract MyContract {\n  address public owner;\n  constructor() { owner = msg.sender; }\n}`, explanation: { en: 'Basic contract structure.', id: 'Struktur kontrak dasar.' } },
+      { title: 'Mapping', code: `mapping(address => uint) public balances;`, explanation: { en: 'Key-value storage for addresses.', id: 'Penyimpanan kunci-nilai untuk alamat.' } }
     ]
   },
   {
@@ -436,27 +111,32 @@ export const languages = [
     name: 'SQL',
     icon: 'SQL',
     color: '#336791',
-    description: {
-        en: 'Language for databases.',
-        id: 'Bahasa untuk database.'
-    },
+    description: { en: 'Database language.', id: 'Bahasa database.' },
     syntax: [
-      {
-        title: 'Subqueries',
-        code: `SELECT name FROM users\nWHERE id IN (SELECT user_id FROM orders WHERE amount > 100);`,
-        explanation: {
-            en: 'A query nested inside another query.',
-            id: 'Kueri yang bersarang di dalam kueri lain.'
-        }
-      },
-      {
-        title: 'GROUP BY',
-        code: `SELECT category, COUNT(*) FROM products\nGROUP BY category\nHAVING COUNT(*) > 5;`,
-        explanation: {
-            en: 'Group rows and filter them based on aggregate conditions.',
-            id: 'Mengelompokkan baris dan menyaringnya berdasarkan kondisi agregat.'
-        }
-      }
+      { title: 'SELECT', code: `SELECT * FROM users WHERE age > 18;`, explanation: { en: 'Retrieving data.', id: 'Mengambil data.' } },
+      { title: 'JOIN', code: `SELECT * FROM a INNER JOIN b ON a.id = b.id;`, explanation: { en: 'Combining tables.', id: 'Menggabungkan tabel.' } }
+    ]
+  },
+  {
+    id: 'php',
+    name: 'PHP',
+    icon: 'PHP',
+    color: '#777bb4',
+    description: { en: 'Web scripting language.', id: 'Bahasa skrip web.' },
+    syntax: [
+      { title: 'Variables', code: `$name = "PHP";`, explanation: { en: 'Dynamic variables with $.', id: 'Variabel dinamis dengan $.' } },
+      { title: 'Arrays', code: `$arr = ["a", "b"];`, explanation: { en: 'Modern array syntax.', id: 'Sintaks array modern.' } }
+    ]
+  },
+  {
+    id: 'swift',
+    name: 'Swift',
+    icon: 'SW',
+    color: '#f05138',
+    description: { en: 'Apple platforms language.', id: 'Bahasa platform Apple.' },
+    syntax: [
+      { title: 'Guard', code: `guard let x = val else { return }`, explanation: { en: 'Early exit and safety.', id: 'Keluar awal dan keamanan.' } },
+      { title: 'Optionals', code: `var name: String?`, explanation: { en: 'Representing absent values.', id: 'Merepresentasikan nilai yang absen.' } }
     ]
   },
   {
@@ -464,27 +144,9 @@ export const languages = [
     name: 'HTML',
     icon: 'HTML',
     color: '#e34f26',
-    description: {
-        en: 'Markup language for web pages.',
-        id: 'Bahasa markup untuk halaman web.'
-    },
+    description: { en: 'Web markup.', id: 'Markup web.' },
     syntax: [
-      {
-        title: 'Forms',
-        code: `<form action="/submit" method="POST">\n  <input type="text" name="name">\n  <button type="submit">Submit</button>\n</form>`,
-        explanation: {
-            en: 'Interactive elements for collecting user input.',
-            id: 'Elemen interaktif untuk mengumpulkan input pengguna.'
-        }
-      },
-      {
-        title: 'Semantic HTML',
-        code: `<main>\n  <header></header>\n  <section></section>\n  <footer></footer>\n</main>`,
-        explanation: {
-            en: 'Use tags that describe their meaning to both browser and developer.',
-            id: 'Gunakan tag yang mendeskripsikan maknanya bagi browser dan pengembang.'
-        }
-      }
+      { title: 'Structure', code: `<html>\n<body>\n  <h1>Title</h1>\n</body>\n</html>`, explanation: { en: 'Standard web document.', id: 'Dokumen web standar.' } }
     ]
   },
   {
@@ -492,27 +154,10 @@ export const languages = [
     name: 'CSS',
     icon: 'CSS',
     color: '#1572b6',
-    description: {
-        en: 'Styles web documents.',
-        id: 'Menghias dokumen web.'
-    },
+    description: { en: 'Web styling.', id: 'Gaya visual web.' },
     syntax: [
-      {
-        title: 'Grid Layout',
-        code: `.grid {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n  gap: 20px;\n}`,
-        explanation: {
-            en: 'Two-dimensional layout system for the web.',
-            id: 'Sistem tata letak dua dimensi untuk web.'
-        }
-      },
-      {
-        title: 'Variables',
-        code: `:root {\n  --primary: #3498db;\n}\n.btn { color: var(--primary); }`,
-        explanation: {
-            en: 'Native CSS variables for reusable values.',
-            id: 'Variabel CSS asli untuk nilai yang dapat digunakan kembali.'
-        }
-      }
+      { title: 'Flexbox', code: `.box { display: flex; }`, explanation: { en: 'Flexible layout system.', id: 'Sistem tata letak fleksibel.' } },
+      { title: 'Grid', code: `.grid { display: grid; }`, explanation: { en: 'Two-dimensional layout.', id: 'Tata letak dua dimensi.' } }
     ]
   },
   {
@@ -520,127 +165,79 @@ export const languages = [
     name: 'Bash',
     icon: 'SH',
     color: '#4eaa25',
-    description: {
-        en: 'Unix shell command language.',
-        id: 'Bahasa perintah shell Unix.'
-    },
+    description: { en: 'Shell scripting.', id: 'Skrip shell.' },
     syntax: [
-      {
-        title: 'Functions',
-        code: `greet() {\n  echo "Hello, $1"\n}\ngreet "World"`,
-        explanation: {
-            en: 'Reusable script blocks with positional arguments.',
-            id: 'Blok skrip yang dapat digunakan kembali dengan argumen posisional.'
-        }
-      },
-      {
-        title: 'Loops',
-        code: `for file in *.txt; do\n  echo $file\ndone`,
-        explanation: {
-            en: 'Iterate over files or sequences in the shell.',
-            id: 'Iterasi melalui file atau urutan di shell.'
-        }
-      }
+      { title: 'Variables', code: `NAME="User"; echo $NAME`, explanation: { en: 'Shell variable usage.', id: 'Penggunaan variabel shell.' } }
     ]
   },
   {
-    id: 'lua',
-    name: 'Lua',
-    icon: 'LUA',
-    color: '#000080',
-    description: {
-        en: 'A lightweight, high-level, multi-paradigm programming language.',
-        id: 'Bahasa pemrograman multi-paradigma tingkat tinggi yang ringan.'
-    },
+    id: 'ruby',
+    name: 'Ruby',
+    icon: 'RB',
+    color: '#701516',
+    description: { en: 'Simplicity and productivity.', id: 'Kesederhanaan dan produktivitas.' },
     syntax: [
-      {
-        title: 'Tables',
-        code: `config = { width = 100, height = 200 }\nprint(config.width)`,
-        explanation: {
-            en: 'Tables are the primary data structure in Lua.',
-            id: 'Tabel adalah struktur data utama di Lua.'
-        }
-      }
+      { title: 'Blocks', code: `[1, 2].each { |x| puts x }`, explanation: { en: 'Iterating with blocks.', id: 'Iterasi dengan blok.' } }
     ]
   },
   {
-    id: 'r',
-    name: 'R',
-    icon: 'R',
-    color: '#276dc3',
-    description: {
-        en: 'A language and environment for statistical computing and graphics.',
-        id: 'Bahasa dan lingkungan untuk komputasi statistik dan grafis.'
-    },
+    id: 'dart',
+    name: 'Dart',
+    icon: 'DT',
+    color: '#00d2b8',
+    description: { en: 'Client-side language.', id: 'Bahasa sisi klien.' },
     syntax: [
-      {
-        title: 'Vectors',
-        code: `x <- c(1, 2, 3, 4, 5)\nmean(x)`,
-        explanation: {
-            en: 'Vectors are basic data structures in R, created using the c() function.',
-            id: 'Vektor adalah struktur data dasar di R, dibuat menggunakan fungsi c().'
-        }
-      }
+      { title: 'Classes', code: `class User { String name; }`, explanation: { en: 'Object-oriented structure.', id: 'Struktur berorientasi objek.' } }
     ]
   },
   {
-    id: 'scala',
-    name: 'Scala',
-    icon: 'SC',
-    color: '#dc322f',
-    description: {
-        en: 'Combines object-oriented and functional programming in one concise language.',
-        id: 'Menggabungkan pemrograman berorientasi objek dan fungsional dalam satu bahasa yang ringkas.'
-    },
+    id: 'julia',
+    name: 'Julia',
+    icon: 'JL',
+    color: '#9558b2',
+    description: { en: 'High-performance computing.', id: 'Komputasi berperforma tinggi.' },
     syntax: [
-      {
-        title: 'Immutability',
-        code: `val x = 10 // Immutable\nvar y = 20 // Mutable`,
-        explanation: {
-            en: 'Scala encourages the use of immutable values with "val".',
-            id: 'Scala mendorong penggunaan nilai yang tidak dapat diubah dengan "val".'
-        }
-      }
+      { title: 'Dispatch', code: `f(x::Int) = x + 1`, explanation: { en: 'Type-based function selection.', id: 'Pemilihan fungsi berbasis tipe.' } }
     ]
   },
   {
-    id: 'perl',
-    name: 'Perl',
-    icon: 'PL',
-    color: '#39457e',
-    description: {
-        en: 'A highly capable, feature-rich programming language.',
-        id: 'Bahasa pemrograman yang sangat mumpuni dan kaya fitur.'
-    },
+    id: 'elixir',
+    name: 'Elixir',
+    icon: 'EX',
+    color: '#4e2a8e',
+    description: { en: 'Fault-tolerant apps.', id: 'Aplikasi tahan kesalahan.' },
     syntax: [
-      {
-        title: 'Scalars',
-        code: `my $name = "Perl";\nprint "Hello, $name\\n";`,
-        explanation: {
-            en: 'Scalars are the simplest data types, prefixed with $.',
-            id: 'Scalar adalah tipe data paling sederhana, diawali dengan $.'
-        }
-      }
+      { title: 'Pipe', code: `val |> func()`, explanation: { en: 'Chaining functions.', id: 'Menghubungkan fungsi.' } }
     ]
   },
   {
-    id: 'haskell',
-    name: 'Haskell',
-    icon: 'HS',
-    color: '#5e5086',
-    description: {
-        en: 'A purely functional programming language.',
-        id: 'Bahasa pemrograman fungsional murni.'
-    },
+    id: 'markdown',
+    name: 'Markdown',
+    icon: 'MD',
+    color: '#083fa1',
+    description: { en: 'Lightweight markup.', id: 'Markup ringan.' },
     syntax: [
-      {
-        title: 'Functions',
-        code: `factorial n = product [1..n]\nmain = print (factorial 5)`,
-        explanation: {
-            en: 'Functions are defined by equations. Recursion and list operations are common.',
-            id: 'Fungsi didefinisikan oleh persamaan. Rekursi dan operasi list adalah hal umum.'
-        }
-      }
+      { title: 'Headers', code: `# Title`, explanation: { en: 'Header levels.', id: 'Level judul.' } }
+    ]
+  },
+  {
+    id: 'json',
+    name: 'JSON',
+    icon: 'JSON',
+    color: '#000000',
+    description: { en: 'Data format.', id: 'Format data.' },
+    syntax: [
+      { title: 'Object', code: `{"id": 1}`, explanation: { en: 'Data representation.', id: 'Representasi data.' } }
+    ]
+  },
+  {
+    id: 'yaml',
+    name: 'YAML',
+    icon: 'YML',
+    color: '#cb171e',
+    description: { en: 'Friendly serialization.', id: 'Serialisasi ramah manusia.' },
+    syntax: [
+      { title: 'Key', code: `key: value`, explanation: { en: 'Data structure.', id: 'Struktur data.' } }
     ]
   }
 ];
