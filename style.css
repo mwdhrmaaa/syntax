@@ -365,10 +365,43 @@ nav {
 
 .syntax-item h4 {
   font-size: 1.4rem;
-  margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.syntax-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.copy-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-family: var(--font-main);
+  transition: var(--transition);
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: var(--accent-color);
+}
+
+.copy-btn.copied {
+  background: var(--accent-color);
+  color: #000;
+  border-color: var(--accent-color);
 }
 
 .syntax-item h4::before {

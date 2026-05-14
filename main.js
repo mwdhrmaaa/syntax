@@ -161,7 +161,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const t = translations[currentLang];
             
             syntaxItem.innerHTML = `
-                <h4>${item.title}</h4>
+                <div class="syntax-header">
+                    <h4>${item.title}</h4>
+                    <button class="copy-btn" data-code="${escapeHtml(item.code)}">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
                 <div class="code-container">
                     <pre><code class="language-${prismLang}">${escapeHtml(item.code)}</code></pre>
                 </div>
@@ -170,6 +176,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             syntaxList.appendChild(syntaxItem);
+        });
+
+        // Add event listeners for copy buttons
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const code = e.currentTarget.dataset.code;
+                copyToClipboard(code, e.currentTarget);
+            });
         });
 
         // Toggle sections
@@ -191,6 +205,25 @@ document.addEventListener('DOMContentLoaded', () => {
         heroSection.classList.remove('hidden');
         syntaxDetailSection.classList.add('hidden');
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function copyToClipboard(text, btn) {
+        // Decode HTML entities (needed because we escaped it for the attribute)
+        const textArea = document.createElement('textarea');
+        textArea.innerHTML = text;
+        const decodedCode = textArea.value;
+
+        navigator.clipboard.writeText(decodedCode).then(() => {
+            const span = btn.querySelector('span');
+            const originalText = span.textContent;
+            span.textContent = currentLang === 'id' ? 'Tersalin!' : 'Copied!';
+            btn.classList.add('copied');
+            
+            setTimeout(() => {
+                span.textContent = originalText;
+                btn.classList.remove('copied');
+            }, 2000);
+        });
     }
 
     function getPrismLang(id) {
